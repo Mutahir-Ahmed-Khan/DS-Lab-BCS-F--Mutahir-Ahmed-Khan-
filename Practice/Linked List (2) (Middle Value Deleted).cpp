@@ -71,20 +71,25 @@ class Linked{
         }
     }
 
-    void popBack(){
-        if(head == NULL){
-            cout << "The List is Empty" << endl;
-        }
-        else{
-            node *temp = head;
-            while(temp->next->next != NULL){
-                temp = temp->next;
-            }
-            temp->next = NULL;
-            delete tail;
-            tail = temp;
-        }
+   void popBack(){
+    if(head == NULL){
+        cout << "The List is Empty" << endl;
     }
+    else if(head == tail){  
+        delete head;
+        head = tail = NULL;
+    }
+    else{
+        node *temp = head;
+        while(temp->next != tail){
+            temp = temp->next;
+        }
+        delete tail;
+        tail = temp;
+        tail->next = NULL;
+    }
+}
+
 
     void insert(int val, int pos){
         int total = 0;
@@ -93,7 +98,6 @@ class Linked{
             temp = temp->next;
             total++;
         }
-        delete temp;
 
         if(pos < 0){
             cout << "Error Ofcourse" << endl;
@@ -117,25 +121,42 @@ class Linked{
     }
     
     void MiddleManGone(){
-        node *temp = head;
+        if(head == NULL){
+            cout << "List is Empty" << endl; 
+        }
+
         int count = 0;
-        int idx;
+        node *temp = head;
         while(temp != NULL){
             temp = temp->next;
             count++;
         }
-        cout << "Counter " << count <<  endl;
+
         if(count % 2 == 0){
             cout << "No Middle Man" << endl;
+            return;
         }
-        else{
-            idx = count / 2;
-            node *temp = head;
-            for(int i = 0; i < idx; i++){
-                temp = temp->next;
-                delete temp;
-            }
+
+        int idx = count / 2;
+        temp = head;
+
+        if(idx == 0){
+            delete head; 
+            head = tail = NULL;
+            return;
         }
+
+        for(int i = 0; i < idx -1 ; i++){
+            temp = temp->next;
+        }
+
+        node *delNode = temp->next;
+        temp->next = delNode->next;
+        if(delNode == tail){
+            tail = temp;
+        }
+        delete delNode;
+
     }
 };
 
@@ -147,6 +168,8 @@ int main(){
     ll.pushFront(2);
     ll.pushFront(3);
     ll.pushFront(4);
+    ll.pushFront(5);
+    ll.pushFront(10);
     ll.print();
     cout << endl;
     ll.pushBack(4);
@@ -163,7 +186,6 @@ int main(){
     ll.print();
     ll.MiddleManGone();
     ll.print();
-
 
 return 0;
 }
