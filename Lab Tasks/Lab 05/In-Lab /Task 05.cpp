@@ -1,6 +1,8 @@
 #include <iostream>
 using namespace std;
 
+//Assume empty Space as '.'
+
 bool isSafe(char board[9][9], int row, int col, char dig){
     for(int j = 0; j < 9; j++){
         if(board[row][j] == dig){
