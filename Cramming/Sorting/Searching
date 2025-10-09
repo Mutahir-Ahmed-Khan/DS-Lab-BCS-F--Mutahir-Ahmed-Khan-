@@ -1,0 +1,15 @@
+1. Linear Search 
+-----------------------------------------------------
+void LinearSearch(int arr[],int v,int size){
+    for(int i = 0; i < size; i++){
+        if(arr[i] == v){
+            cout << "Founded on Index " << i << endl;
+            return; 
+        }
+        cout << "Not in Array" << endl;
+    }
+
+}
+-----------------------------------------------------
+
+2. Binary Search
