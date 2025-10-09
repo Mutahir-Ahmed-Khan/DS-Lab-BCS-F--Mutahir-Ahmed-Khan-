@@ -38,3 +38,5 @@ int binarySearch(int arr[], int s, int target){
 -----------------------------------------------------------
 
 3. Interpolation Search
+
+
