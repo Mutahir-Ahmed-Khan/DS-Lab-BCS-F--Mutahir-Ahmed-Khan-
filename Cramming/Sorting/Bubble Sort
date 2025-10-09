@@ -1,0 +1,5 @@
+// i = 0; i < size; i++
+//j = 0; j < size - 1; j++
+//arr[j] > arr[j + 1]
+//swap(arr[j], arr[j+1]
+
