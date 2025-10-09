@@ -1,0 +1,17 @@
+void shellSort(int arr[], int size){
+    //Dealing with the gap
+    for(int gap = size/2; gap >= 1; gap = gap / 2){
+        //Dealing with j
+        for(int j = gap; j < size; j++){
+            //Dealing with i
+            for(int i = j - gap; i >= 0; i = i - gap){
+                if(arr[i + gap] > arr[i]){
+                    break;
+                }
+                else{ 
+                    swap(arr[i + gap], arr[i]);
+                }
+            }
+        }
+    }
+}
