@@ -1,0 +1,36 @@
+#include <iostream>
+using namespace std;
+int main(){
+    int **train;
+    int trn;
+    int *people;
+
+    cout << "How Many Trains are there: ";
+    cin >> trn;
+
+    people = new int[trn];
+    for(int i = 0; i < trn; i++){
+        cout << "ENTER PEOPLE FOR TRAIN " << i + 1 << " : ";
+        cin >> people[i];
+    }
+
+    train = new int*[trn];
+    for(int i = 0; i < trn; i++){
+        train[i] = new int[people[i]];
+    }
+
+    for(int i = 0; i < trn; i++){
+        for(int j = 0; j < people[i]; j++){
+            train[i][j] = 0;
+        }
+    }
+
+    for(int i = 0; i < trn; i++){
+        for(int j = 0; j < people[i]; j++){
+            cout << train[i][j] << " ";
+        }
+        cout << endl;
+    }
+    
+return 0;
+}
